@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="78de569d-d9ea-4730-8d85-cd7bb0577912" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1onVi8KEf8LZ3ua21dsyxbIgZ5J" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Go Test.TestArrayInt in exec/example">
+    <configuration name="TestArrayInt in exec/example" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="exec" />
+      <working_directory value="$PROJECT_DIR$/example" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="exec/example" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestArrayInt\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestBitClear in exec/example" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="exec" />
+      <working_directory value="$PROJECT_DIR$/example" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="exec/example" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestBitClear\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestCompareArray in exec/example" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="exec" />
+      <working_directory value="$PROJECT_DIR$/example" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="exec/example" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestCompareArray\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestFormat in exec/example" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="exec" />
+      <working_directory value="$PROJECT_DIR$/example" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="exec/example" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestFormat\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestSwitchMultiCase in exec/example" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="exec" />
+      <working_directory value="$PROJECT_DIR$/example" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="exec/example" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestSwitchMultiCase\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestArrayInt in exec/example" />
+        <item itemvalue="Go Test.TestSwitchMultiCase in exec/example" />
+        <item itemvalue="Go Test.TestBitClear in exec/example" />
+        <item itemvalue="Go Test.TestCompareArray in exec/example" />
+        <item itemvalue="Go Test.TestFormat in exec/example" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="78de569d-d9ea-4730-8d85-cd7bb0577912" name="Default Changelist" comment="" />
+      <created>1613922465188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613922465188</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1089" y="-422" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1615822467258">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state x="-1089" y="-422" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.-1080.1920.1080/-1440.-1373.1440.2560/0.0.1680.1050@-1440.-1373.1440.2560" timestamp="1615822467258" />
+    <state width="1398" height="715" key="GridCell.Tab.0.bottom" timestamp="1615822394523">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="715" key="GridCell.Tab.0.bottom/0.-1080.1920.1080/-1440.-1080.1440.2560/0.0.1680.1050@-1440.-1080.1440.2560" timestamp="1615820831380" />
+    <state width="1398" height="715" key="GridCell.Tab.0.bottom/0.-1080.1920.1080/-1440.-1373.1440.2560/0.0.1680.1050@-1440.-1373.1440.2560" timestamp="1615822394523" />
+    <state width="1398" height="715" key="GridCell.Tab.0.bottom/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1615305112907" />
+    <state width="1398" height="715" key="GridCell.Tab.0.center" timestamp="1615822394521">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="715" key="GridCell.Tab.0.center/0.-1080.1920.1080/-1440.-1080.1440.2560/0.0.1680.1050@-1440.-1080.1440.2560" timestamp="1615820831379" />
+    <state width="1398" height="715" key="GridCell.Tab.0.center/0.-1080.1920.1080/-1440.-1373.1440.2560/0.0.1680.1050@-1440.-1373.1440.2560" timestamp="1615822394521" />
+    <state width="1398" height="715" key="GridCell.Tab.0.center/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1615305112905" />
+    <state width="1398" height="715" key="GridCell.Tab.0.left" timestamp="1615822394520">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="715" key="GridCell.Tab.0.left/0.-1080.1920.1080/-1440.-1080.1440.2560/0.0.1680.1050@-1440.-1080.1440.2560" timestamp="1615820831378" />
+    <state width="1398" height="715" key="GridCell.Tab.0.left/0.-1080.1920.1080/-1440.-1373.1440.2560/0.0.1680.1050@-1440.-1373.1440.2560" timestamp="1615822394520" />
+    <state width="1398" height="715" key="GridCell.Tab.0.left/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1615305112904" />
+    <state width="1398" height="715" key="GridCell.Tab.0.right" timestamp="1615822394522">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="715" key="GridCell.Tab.0.right/0.-1080.1920.1080/-1440.-1080.1440.2560/0.0.1680.1050@-1440.-1080.1440.2560" timestamp="1615820831380" />
+    <state width="1398" height="715" key="GridCell.Tab.0.right/0.-1080.1920.1080/-1440.-1373.1440.2560/0.0.1680.1050@-1440.-1373.1440.2560" timestamp="1615822394522" />
+    <state width="1398" height="715" key="GridCell.Tab.0.right/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1615305112906" />
+    <state width="1398" height="968" key="GridCell.Tab.1.bottom" timestamp="1614089690056">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="968" key="GridCell.Tab.1.bottom/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1614089690056" />
+    <state width="1398" height="968" key="GridCell.Tab.1.center" timestamp="1614089690055">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="968" key="GridCell.Tab.1.center/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1614089690055" />
+    <state width="1398" height="968" key="GridCell.Tab.1.left" timestamp="1614089690055">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="968" key="GridCell.Tab.1.left/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1614089690055" />
+    <state width="1398" height="968" key="GridCell.Tab.1.right" timestamp="1614089690056">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state width="1398" height="968" key="GridCell.Tab.1.right/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1614089690056" />
+    <state x="-1019" y="-461" width="598" height="735" key="find.popup" timestamp="1615822451359">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state x="-1019" y="-461" width="598" height="735" key="find.popup/0.-1080.1920.1080/-1440.-1373.1440.2560/0.0.1680.1050@-1440.-1373.1440.2560" timestamp="1615822451359" />
+    <state x="-1055" y="-762" width="670" height="676" key="search.everywhere.popup" timestamp="1614696428047">
+      <screen x="-1440" y="-1373" width="1440" height="2560" />
+    </state>
+    <state x="-1055" y="-762" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050/0.-1080.1920.1080/-1440.-1373.1440.2560@-1440.-1373.1440.2560" timestamp="1614696428047" />
+  </component>
+</project>
