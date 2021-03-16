@@ -52,7 +52,7 @@ func TestConstantTry(t *testing.T) {
 	t.Log(Readable, Writable, Executable)
 }
 
-// alias
+// type alias
 type MyInt int64
 
 func TestImplicit(t *testing.T) {
@@ -160,7 +160,7 @@ func TestArrayInt(t *testing.T) {
 	}
 }
 
-// if
+// condition
 func TestIfMultiSec(t *testing.T) {
 	b := 1
 	if a := b == 1; a {
@@ -196,6 +196,7 @@ func TestSwitchCaseCondition(t *testing.T) {
 	}
 }
 
+// array
 func TestArraySection(t *testing.T) {
 	arr := [...]int{1, 2, 3, 4, 5}
 	arr_sec := arr[1:]
@@ -242,6 +243,7 @@ func TestSliceShareMemory(t *testing.T) {
 	t.Log(Q2)
 }
 
+// map
 func TestInitMap(t *testing.T) {
 	m1 := map[int]int{1: 1, 2: 4, 5: 9}
 	t.Log(m1[2])
@@ -340,6 +342,7 @@ func TestFn(t *testing.T) {
 	t.Log(a, b)
 }
 
+// closure
 func timeSpent(inner func(op int) int) func(op int) int {
 	return func(n int) int {
 		start := time.Now()
@@ -379,6 +382,8 @@ func Clear() {
 	fmt.Println("Clear resources.")
 }
 
+// panic
+// defer
 func TestDefer(t *testing.T) {
 	defer Clear()
 	fmt.Println("Start")
@@ -391,6 +396,7 @@ type Employee struct {
 	Age  int
 }
 
+// struct
 func TestCreatEmployeeObj(t *testing.T) {
 	e := Employee{"0", "Bob", 20}
 	e1 := Employee{Name: "Mike", Age: 30}
@@ -460,6 +466,7 @@ func TestFn3(t *testing.T) {
 	t.Log(tsSF(10))
 }
 
+// object oriented
 type Pet struct {
 }
 
@@ -504,7 +511,7 @@ func TestDog2(t *testing.T) {
 	dog.SpeakTo("damao")
 }
 
-//polymorphism
+// polymorphism
 type Code string
 type Coder interface {
 	WriteHelloWorld() Code
@@ -605,6 +612,7 @@ func TestGroutine(t *testing.T) {
 	}
 }
 
+// lock
 func TestCounter(t *testing.T) {
 	counter := 0
 	for i := 0; i < 5000; i++ {
@@ -651,7 +659,7 @@ func TestCounterWaitGroup(t *testing.T) {
 	t.Logf("counter = %d", counter)
 }
 
-//csp
+// csp
 func service() string {
 	time.Sleep(time.Millisecond * 50)
 	return "Done"
@@ -880,7 +888,7 @@ func TestAllResponse(t *testing.T) {
 	t.Log("After:", runtime.NumGoroutine())
 }
 
-// object pool
+// example: pool
 type ResuableObj struct {
 }
 
