@@ -1,6 +1,7 @@
 ## hello Go
 
 content:
+
 + assignment
 + type alias
 + format
