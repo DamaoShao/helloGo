@@ -14,6 +14,13 @@ go的价值:
 //通os.Exit()来返回
 //通过os.args来接受参数
 
+// go run hello_world.go
+// or
+// go build hello_world.go
+// ./hello_world
+
+// go fmt hello_world.go
+
 func main() {
 	fmt.Println("hello world!")
 }

@@ -14,15 +14,18 @@ import (
 	"unsafe"
 )
 
+/*
+go test -v fib_test.go -test.run TestAssignment
+*/
+
 // assignment
 func TestAssignment(t *testing.T) {
 	var a int
 	a = 1
-	var b  = 2
+	var b = 2
 	c := 3
-	t.Log(a,b,c)
+	t.Log(a, b, c)
 }
-
 
 func TestExchange(t *testing.T) {
 	a := 1
@@ -31,14 +34,14 @@ func TestExchange(t *testing.T) {
 	t.Log(a, b)
 }
 
-const(
+const (
 	Monday = iota + 1
 	Tuesday
 	Wednesday
 	Saturday
 )
 
-const(
+const (
 	Readable = 1 << iota
 	Writable
 	Executable
@@ -61,7 +64,7 @@ func TestImplicit(t *testing.T) {
 	t.Log(a, b, c)
 }
 
-func TestPoint(t *testing.T)  {
+func TestPoint(t *testing.T) {
 	a := 1
 	aPtr := &a
 	t.Log(a, aPtr)
@@ -73,10 +76,10 @@ type user struct {
 }
 
 // format
-func TestFormat(t *testing.T){
+func TestFormat(t *testing.T) {
 	u := user{"damao"}
 	//Printf 格式化输出
-	fmt.Printf("%+v\n", u)     //格式化输出结构
+	fmt.Printf("%+v\n", u)       //格式化输出结构
 	fmt.Printf("%#v\n", u)       //输出值的 Go 语言表示方法
 	fmt.Printf("%T\n", u)        //输出值的类型的 Go 语言表示
 	fmt.Printf("%t\n", true)     //输出值的 true 或 false
@@ -100,20 +103,9 @@ func TestFormat(t *testing.T){
 	fmt.Printf("%X\n", "asdzxc") //每个字节用两字节十六进制表示，A-F表示
 }
 
-func TestString(t *testing.T){
+func TestString(t *testing.T) {
 	var a string
 	t.Log("*" + a + "*")
-}
-
-func TestCompareArray(t *testing.T) {
-	a := [...]int{1,2,3,4}
-	aa := [...]int{1,2,3,4}
-	//b := [...]int{1,2,3,4,5}
-	//c := [...]int{1,3,2}
-	//t.Log(a==b)
-	//t.Log(a==c)
-	t.Log(a==aa)
-
 }
 
 // loop
@@ -121,11 +113,11 @@ func TestFibList(t *testing.T) {
 	a := 1
 	b := 1
 	fmt.Print(a)
-	for i :=0; i <5; i++ {
+	for i := 0; i < 5; i++ {
 		fmt.Print(" ", b)
 		tmp := a
 		a = b
-		b = tmp +a
+		b = tmp + a
 	}
 	fmt.Println()
 }
@@ -139,16 +131,27 @@ func TestWhileLoop(t *testing.T) {
 	}
 }
 
+func TestCompareArray(t *testing.T) {
+	a := [...]int{1, 2, 3, 4}
+	aa := [...]int{1, 2, 3, 4}
+	//b := [...]int{1,2,3,4,5}
+	//c := [...]int{1,3,2}
+	//t.Log(a==b)
+	//t.Log(a==c)
+	t.Log(a == aa)
+
+}
+
 func TestArrayInt(t *testing.T) {
 	var arr [3]int
-	arr2 := [4]int{1,2,3,4}
-	arr3 := [...]int{1,3,4,5}
+	arr2 := [4]int{1, 2, 3, 4}
+	arr3 := [...]int{1, 3, 4, 5}
 	arr[1] = 5
 	t.Log(arr[1], arr[2])
 	t.Log(arr2, arr3)
 	t.Log(arr2[1:])
 
-	for i:= 0; i <len(arr3); i++ {
+	for i := 0; i < len(arr3); i++ {
 		t.Log(arr3[i])
 	}
 
@@ -158,35 +161,33 @@ func TestArrayInt(t *testing.T) {
 }
 
 // if
-func TestIfMultiSec(t *testing.T){
+func TestIfMultiSec(t *testing.T) {
 	b := 1
-	if a := b == 1; a{
+	if a := b == 1; a {
 		t.Log("1==1")
 	}
 }
 
-
 // switch
-func TestSwitchMultiCase(t *testing.T){
-	for i := 0; i< 5; i++ {
+func TestSwitchMultiCase(t *testing.T) {
+	for i := 0; i < 5; i++ {
 		switch i {
-		case 0,2:
+		case 0, 2:
 			t.Log("Even")
-		case 1,3:
+		case 1, 3:
 			t.Log("Odd")
 		default:
 			t.Log("4")
-
 		}
 	}
 }
 
-func TestSwitchCaseCondition(t *testing.T){
-	for i := 0; i< 5; i++ {
-		switch  {
-		case i % 2 == 0:
+func TestSwitchCaseCondition(t *testing.T) {
+	for i := 0; i < 5; i++ {
+		switch {
+		case i%2 == 0:
 			t.Log("Even")
-		case i % 2 == 1:
+		case i%2 == 1:
 			t.Log("Odd")
 		default:
 			t.Log("?")
@@ -195,10 +196,8 @@ func TestSwitchCaseCondition(t *testing.T){
 	}
 }
 
-
-
 func TestArraySection(t *testing.T) {
-	arr := [...]int{1,2,3,4,5}
+	arr := [...]int{1, 2, 3, 4, 5}
 	arr_sec := arr[1:]
 	t.Log(arr)
 	t.Log(arr_sec)
@@ -208,27 +207,28 @@ func TestArraySection(t *testing.T) {
 	t.Log(arr_sec)
 }
 
-func TestSliceInit(t *testing.T){
+// slice
+func TestSliceInit(t *testing.T) {
 	var s0 []int
 	t.Log(len(s0), cap(s0))
 	s0 = append(s0, 1)
 	t.Log(len(s0), cap(s0))
 
-	s1 := []int{1,2,3,4}
+	s1 := []int{1, 2, 3, 4}
 	t.Log(len(s1), cap(s1))
 
-	s2 := make([]int,3,5)
+	s2 := make([]int, 3, 5)
 	t.Log(len(s2), cap(s2))
 	//t.Log(s2[4])
 
 	s3 := []int{}
-	for i:=0;i<10;i++{
-		s3 = append(s3,i)
+	for i := 0; i < 10; i++ {
+		s3 = append(s3, i)
 		t.Log(len(s3), cap(s3))
 	}
 }
 
-func TestSliceShareMemory(t *testing.T){
+func TestSliceShareMemory(t *testing.T) {
 	year := []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 	Q2 := year[3:6]
 	t.Log(Q2, len(Q2), cap(Q2))
@@ -243,7 +243,7 @@ func TestSliceShareMemory(t *testing.T){
 }
 
 func TestInitMap(t *testing.T) {
-	m1 := map[int]int{1:1,2:4,5:9}
+	m1 := map[int]int{1: 1, 2: 4, 5: 9}
 	t.Log(m1[2])
 	t.Log(m1)
 	t.Logf("len m1=%d", len(m1))
@@ -255,12 +255,12 @@ func TestInitMap(t *testing.T) {
 	t.Logf("len m3=%d", len(m3))
 }
 
-func TestAccessNotExistingKey(t *testing.T){
+func TestAccessNotExistingKey(t *testing.T) {
 	m1 := map[int]int{}
 	t.Log(m1[1])
 	m1[2] = 0
 	t.Log(m1[2])
-	if v,ok := m1[3];ok {
+	if v, ok := m1[3]; ok {
 		t.Log(ok)
 		t.Logf("Key 3's b value is %d", v)
 	} else {
@@ -269,19 +269,19 @@ func TestAccessNotExistingKey(t *testing.T){
 	}
 }
 
-func TestTraveMap(t *testing.T){
-	m1 := map[int]int{1:1,2:4,5:9}
-	for k,v := range m1{
-		t.Log(k,v)
+func TestTraveMap(t *testing.T) {
+	m1 := map[int]int{1: 1, 2: 4, 5: 9}
+	for k, v := range m1 {
+		t.Log(k, v)
 	}
 }
 
 func TestMapWithFunValue(t *testing.T) {
 	m := map[int]func(op int) int{}
-	m[1] = func(op int) int { return 1*op}
-	m[2] = func(op int) int { return 2*op}
-	m[3] = func(op int) int { return 3*op}
-	m[4] = func(op int) int { return 4*op}
+	m[1] = func(op int) int { return 1 * op }
+	m[2] = func(op int) int { return 2 * op }
+	m[3] = func(op int) int { return 3 * op }
+	m[4] = func(op int) int { return 4 * op }
 	t.Log(m[1](2), m[2](2))
 	t.Log(m)
 }
@@ -292,7 +292,7 @@ func TestMapForSet(t *testing.T) {
 	n := 1
 	if mySet[n] {
 		t.Log("existing")
-	}else {
+	} else {
 		t.Log("not existing")
 	}
 	t.Log(len(mySet))
@@ -324,15 +324,14 @@ func TestString2(t *testing.T) {
 	}
 	t.Log(strings.Join(parts, "-"))
 
-
 	s4 := strconv.Itoa(10)
 	t.Log("str" + s4)
 	if i, err := strconv.Atoi("10"); err == nil {
-		t.Log(10 +i)
+		t.Log(10 + i)
 	}
 }
 
-func returnMultiValues() (int, int){
+func returnMultiValues() (int, int) {
 	return rand.Intn(11), rand.Intn(20)
 }
 
@@ -351,29 +350,29 @@ func timeSpent(inner func(op int) int) func(op int) int {
 	}
 }
 
-func slowFunc(op int) int{
-	time.Sleep(time.Second*1)
+func slowFunc(op int) int {
+	time.Sleep(time.Second * 1)
 	return op
 }
 
 func TestFn2(t *testing.T) {
-	a, _:= returnMultiValues()
+	a, _ := returnMultiValues()
 	t.Log(a)
 	tsSF := timeSpent(slowFunc)
 	t.Log(tsSF(10))
 }
 
-func Sum(ops ...int) int{
+func Sum(ops ...int) int {
 	ret := 0
-	for _, op := range ops{
+	for _, op := range ops {
 		ret += op
 	}
 	return ret
 }
 
-func TestVarParam(t *testing.T){
-	t.Log(Sum(1,2,3,4))
-	t.Log(Sum(1,2,3,4,5))
+func TestVarParam(t *testing.T) {
+	t.Log(Sum(1, 2, 3, 4))
+	t.Log(Sum(1, 2, 3, 4, 5))
 }
 
 func Clear() {
@@ -386,11 +385,10 @@ func TestDefer(t *testing.T) {
 	panic("err")
 }
 
-
 type Employee struct {
-	Id string
+	Id   string
 	Name string
-	Age int
+	Age  int
 }
 
 func TestCreatEmployeeObj(t *testing.T) {
@@ -432,15 +430,13 @@ type Programmer interface {
 }
 
 type GoProgrammer struct {
-
 }
 
-
-func (g GoProgrammer) WriteHelloWorld( ) string{
-   return "hello world"
+func (g GoProgrammer) WriteHelloWorld() string {
+	return "hello world"
 }
 
-func TestClient(t *testing.T){
+func TestClient(t *testing.T) {
 	var p Programmer
 	p = new(GoProgrammer)
 	t.Log(p.WriteHelloWorld())
@@ -457,19 +453,17 @@ func timeSpent2(inner IntConv) IntConv {
 	}
 }
 
-
 func TestFn3(t *testing.T) {
-	a, _:= returnMultiValues()
+	a, _ := returnMultiValues()
 	t.Log(a)
 	tsSF := timeSpent2(slowFunc)
 	t.Log(tsSF(10))
 }
 
 type Pet struct {
-
 }
 
-func (p *Pet) Speak(){
+func (p *Pet) Speak() {
 	fmt.Print("hello")
 }
 
@@ -501,7 +495,7 @@ type Dog2 struct {
 	Pet
 }
 
-func (d *Dog2) Speak(){
+func (d *Dog2) Speak() {
 	fmt.Println("hi")
 }
 
@@ -510,7 +504,6 @@ func TestDog2(t *testing.T) {
 	dog.SpeakTo("damao")
 }
 
-
 //polymorphism
 type Code string
 type Coder interface {
@@ -518,16 +511,13 @@ type Coder interface {
 }
 
 type GoCoder struct {
-
 }
-
 
 func (g *GoCoder) WriteHelloWorld() Code {
 	return "hello go coder"
 }
 
 type PythonCoder struct {
-
 }
 
 func (p *PythonCoder) WriteHelloWorld() Code {
@@ -577,38 +567,38 @@ func TestEmptyInterFaceAssertion(t *testing.T) {
 }
 
 func Getfibonacci(n int) ([]int, error) {
-	if n <0 {
+	if n < 0 {
 		return nil, LessERROR
 	}
 	fibList := []int{1, 1}
-	for i := 2;i<n;i++ {
+	for i := 2; i < n; i++ {
 		fibList = append(fibList, fibList[i-2]+fibList[i-1])
 	}
-	return fibList,nil
+	return fibList, nil
 }
 
 var LessERROR = errors.New("<2")
 
-
-func TestGetfibonacci(t *testing.T){
+func TestGetfibonacci(t *testing.T) {
 	if v, err := Getfibonacci(-10); err != nil {
 		t.Error(err)
-	} else {t.Log(v)}
+	} else {
+		t.Log(v)
+	}
 }
 
 func TestPanicVxExit(t *testing.T) {
 	defer func() {
 		if err := recover(); err != nil {
-			fmt.Println("recovered from ", err )
+			fmt.Println("recovered from ", err)
 		}
 	}()
 	fmt.Println("Start")
 	panic(errors.New("wrong!"))
 }
 
-
 func TestGroutine(t *testing.T) {
-	for i:=0; i<10; i++ {
+	for i := 0; i < 10; i++ {
 		go func(i int) {
 			fmt.Println(i)
 		}(i)
@@ -617,28 +607,28 @@ func TestGroutine(t *testing.T) {
 
 func TestCounter(t *testing.T) {
 	counter := 0
-	for i :=0; i< 5000; i++ {
+	for i := 0; i < 5000; i++ {
 		go func() {
-			counter ++
+			counter++
 		}()
 	}
-	time.Sleep(1* time.Second)
+	time.Sleep(1 * time.Second)
 	t.Logf("counter = %d", counter)
 }
 
 func TestCounterWithLock(t *testing.T) {
 	var mut sync.Mutex
 	counter := 0
-	for i :=0; i< 5000; i++ {
+	for i := 0; i < 5000; i++ {
 		go func() {
 			defer func() {
 				mut.Unlock()
 			}()
 			mut.Lock()
-			counter ++
+			counter++
 		}()
 	}
-	time.Sleep(1* time.Second)
+	time.Sleep(1 * time.Second)
 	t.Logf("counter = %d", counter)
 }
 
@@ -646,14 +636,14 @@ func TestCounterWaitGroup(t *testing.T) {
 	var mut sync.Mutex
 	var wg sync.WaitGroup
 	counter := 0
-	for i :=0; i< 5000; i++ {
+	for i := 0; i < 5000; i++ {
 		wg.Add(1)
 		go func() {
 			defer func() {
 				mut.Unlock()
 			}()
 			mut.Lock()
-			counter ++
+			counter++
 			wg.Done()
 		}()
 	}
@@ -663,13 +653,13 @@ func TestCounterWaitGroup(t *testing.T) {
 
 //csp
 func service() string {
-	time.Sleep(time.Millisecond*50)
+	time.Sleep(time.Millisecond * 50)
 	return "Done"
 }
 
 func otherTask() {
 	fmt.Println("working on something else")
-	time.Sleep(time.Microsecond *100)
+	time.Sleep(time.Microsecond * 100)
 	fmt.Println("Task is done.")
 }
 
@@ -696,7 +686,7 @@ func TestAsynService(t *testing.T) {
 	fmt.Println(<-retCh)
 }
 
-func TestSelect(t *testing.T){
+func TestSelect(t *testing.T) {
 	select {
 	case ret := <-AsyncService():
 		t.Log(ret)
@@ -706,9 +696,9 @@ func TestSelect(t *testing.T){
 }
 
 //close channel
-func dataProducer(ch chan int, wg *sync.WaitGroup){
+func dataProducer(ch chan int, wg *sync.WaitGroup) {
 	go func() {
-		for i:= 0; i<10; i++ {
+		for i := 0; i < 10; i++ {
 			ch <- i
 		}
 		close(ch)
@@ -716,12 +706,12 @@ func dataProducer(ch chan int, wg *sync.WaitGroup){
 	}()
 }
 
-func dataReceiver(ch chan int, wg *sync.WaitGroup){
+func dataReceiver(ch chan int, wg *sync.WaitGroup) {
 	go func() {
 		for {
 			if data, ok := <-ch; ok {
 				fmt.Println(data)
-			} else{
+			} else {
 				break
 			}
 		}
@@ -740,29 +730,29 @@ func TestCloseChannel(t *testing.T) {
 }
 
 // cancel
-func isCancelled(cancelChan chan struct{}) bool{
+func isCancelled(cancelChan chan struct{}) bool {
 	select {
-	case <- cancelChan:
+	case <-cancelChan:
 		return true
 	default:
 		return false
 	}
 }
 
-func cancel_1(cancelChan chan struct{}){
+func cancel_1(cancelChan chan struct{}) {
 	cancelChan <- struct{}{}
 }
 
-func cancel_2(cancelChan chan struct{}){
+func cancel_2(cancelChan chan struct{}) {
 	close(cancelChan)
 }
 
-func TestCancel(t *testing.T){
+func TestCancel(t *testing.T) {
 	cancelChan := make(chan struct{}, 0)
-	for i :=0; i<5; i++ {
-		go func(i int, cancelCh chan struct{}){
+	for i := 0; i < 5; i++ {
+		go func(i int, cancelCh chan struct{}) {
 			for {
-				if isCancelled(cancelCh){
+				if isCancelled(cancelCh) {
 					break
 				}
 				time.Sleep(time.Microsecond * 5)
@@ -794,13 +784,13 @@ func isCancelledWithContext(ctx context.Context) bool {
 	}
 }
 
-func TestCancelWithContext(t *testing.T){
+func TestCancelWithContext(t *testing.T) {
 
 	ctx, cancel := context.WithCancel(context.Background())
-	for i :=0; i<5; i++ {
-		go func(i int, ctx context.Context){
+	for i := 0; i < 5; i++ {
+		go func(i int, ctx context.Context) {
 			for {
-				if isCancelledWithContext(ctx){
+				if isCancelledWithContext(ctx) {
 					break
 				}
 				time.Sleep(time.Microsecond * 5)
@@ -814,7 +804,6 @@ func TestCancelWithContext(t *testing.T){
 
 // singleton
 type Singleton struct {
-
 }
 
 var singleInstance *Singleton
@@ -828,14 +817,14 @@ func GetSingletonObj() *Singleton {
 	return singleInstance
 }
 
-func TestGetSingletonObj(t *testing.T){
+func TestGetSingletonObj(t *testing.T) {
 	var wg sync.WaitGroup
-	for i := 0; i<10; i++{
+	for i := 0; i < 10; i++ {
 		wg.Add(1)
-		go func(){
+		go func() {
 			obj := GetSingletonObj()
 			//fmt.Println(obj)
-			fmt.Printf("%x\n",unsafe.Pointer(obj))
+			fmt.Printf("%x\n", unsafe.Pointer(obj))
 			wg.Done()
 		}()
 	}
@@ -851,8 +840,8 @@ func runTask(id int) string {
 func FirstResponse() string {
 	numOfRunner := 10
 	ch := make(chan string, numOfRunner)
-	for i:=0;i<numOfRunner;i++{
-		go func(i int){
+	for i := 0; i < numOfRunner; i++ {
+		go func(i int) {
 			ret := runTask(i)
 			ch <- ret
 		}(i)
@@ -860,32 +849,31 @@ func FirstResponse() string {
 	return <-ch
 }
 
-func TestFirstResponse(t *testing.T){
+func TestFirstResponse(t *testing.T) {
 	t.Log("Before:", runtime.NumGoroutine())
 	t.Log(FirstResponse())
 	time.Sleep(time.Second * 1)
 	t.Log("After:", runtime.NumGoroutine())
 }
 
-
 // all task return, main func return
 func AllResponse() string {
 	numOfRunner := 10
 	ch := make(chan string, numOfRunner)
-	for i:=0;i<numOfRunner;i++{
-		go func(i int){
+	for i := 0; i < numOfRunner; i++ {
+		go func(i int) {
 			ret := runTask(i)
 			ch <- ret
 		}(i)
 	}
-	finalRet:=""
-	for j:=0;j<numOfRunner;j++{
+	finalRet := ""
+	for j := 0; j < numOfRunner; j++ {
 		finalRet += <-ch + "\n"
 	}
 	return finalRet
 }
 
-func TestAllResponse(t *testing.T){
+func TestAllResponse(t *testing.T) {
 	t.Log("Before:", runtime.NumGoroutine())
 	t.Log(AllResponse())
 	time.Sleep(time.Second * 1)
@@ -894,7 +882,6 @@ func TestAllResponse(t *testing.T){
 
 // object pool
 type ResuableObj struct {
-
 }
 
 type ObjPool struct {
@@ -904,17 +891,17 @@ type ObjPool struct {
 func NewObjPool(numOfObj int) *ObjPool {
 	objPool := ObjPool{}
 	objPool.bufChan = make(chan *ResuableObj, numOfObj)
-	for i :=0; i< numOfObj; i++{
+	for i := 0; i < numOfObj; i++ {
 		objPool.bufChan <- &ResuableObj{}
 	}
 	return &objPool
 }
 
-func (p *ObjPool) GetObj(timeout time.Duration) (*ResuableObj, error){
+func (p *ObjPool) GetObj(timeout time.Duration) (*ResuableObj, error) {
 	select {
-	case ret := <- p.bufChan:
+	case ret := <-p.bufChan:
 		return ret, nil
-	case <- time.After(timeout): //超时控制
+	case <-time.After(timeout): //超时控制
 		return nil, errors.New("tiem out")
 	}
 }
@@ -928,10 +915,10 @@ func (p *ObjPool) RelaseObj(obj *ResuableObj) error {
 	}
 }
 
-func TestObjPool(t *testing.T){
+func TestObjPool(t *testing.T) {
 	pool := NewObjPool(10)
-	for i :=0; i<11; i++{
-		if v, err := pool.GetObj(time.Second *1); err !=nil {
+	for i := 0; i < 11; i++ {
+		if v, err := pool.GetObj(time.Second * 1); err != nil {
 			t.Error(err)
 		} else {
 			fmt.Printf("%T\n", v)
@@ -942,13 +929,3 @@ func TestObjPool(t *testing.T){
 	}
 	fmt.Println("Done")
 }
-
-// reflect.TypeOf vs reflect.ValueOf
-/*
-reflect.TypeOf 返回类型（reflect.Type）
-reflect.ValueOf返回值（reflect.Value）
-从reflect.Value获取类型
-通过kind的类型来断
- */
-
-// pipe-filter
