@@ -211,31 +211,31 @@ func TestArraySection(t *testing.T) {
 // slice
 func TestSliceInit(t *testing.T) {
 	var s0 []int
-	t.Log(len(s0), cap(s0))
+	t.Log("s0",len(s0), cap(s0))
 	s0 = append(s0, 1)
-	t.Log(len(s0), cap(s0))
+	t.Log("s0", len(s0), cap(s0))
 
 	s1 := []int{1, 2, 3, 4}
-	t.Log(len(s1), cap(s1))
+	t.Log("s1",len(s1), cap(s1))
 
 	s2 := make([]int, 3, 5)
-	t.Log(len(s2), cap(s2))
+	t.Log("s2",len(s2), cap(s2))
 	//t.Log(s2[4])
 
 	s3 := []int{}
 	for i := 0; i < 10; i++ {
 		s3 = append(s3, i)
-		t.Log(len(s3), cap(s3))
+		t.Log("s3", len(s3), cap(s3))
 	}
 }
 
 func TestSliceShareMemory(t *testing.T) {
 	year := []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 	Q2 := year[3:6]
-	t.Log(Q2, len(Q2), cap(Q2))
+	t.Log("Q2:", Q2, len(Q2), cap(Q2))
 
 	summer := year[5:8]
-	t.Log(summer, len(summer), cap(summer))
+	t.Log("summer:", summer, len(summer), cap(summer))
 	summer[0] = "unknow"
 
 	t.Log(year)
@@ -302,21 +302,26 @@ func TestMapForSet(t *testing.T) {
 }
 
 func TestString2(t *testing.T) {
+	t.Log("--------1--------")
 	s := "中"
 	t.Log(s)
 	t.Log(len(s)) //byte数量
 
+	t.Log("--------2--------")
 	c := []rune(s)
 	t.Log(len(c))
 
+	t.Log("--------3--------")
 	t.Logf("中 unicode %x", c[0])
 	t.Logf("中 UTF8 %x", s)
 
+	t.Log("--------4--------")
 	s2 := "你好，世界"
 	for _, c := range s2 {
 		t.Logf("%[1]c %[1]d %[1]x", c)
 	}
 
+	t.Log("--------5--------")
 	s3 := "A,B,C"
 	parts := strings.Split(s3, ",")
 	t.Log(s3)
@@ -326,6 +331,7 @@ func TestString2(t *testing.T) {
 	}
 	t.Log(strings.Join(parts, "-"))
 
+	t.Log("--------6--------")
 	s4 := strconv.Itoa(10)
 	t.Log("str" + s4)
 	if i, err := strconv.Atoi("10"); err == nil {
@@ -333,6 +339,7 @@ func TestString2(t *testing.T) {
 	}
 }
 
+// closure
 func returnMultiValues() (int, int) {
 	return rand.Intn(11), rand.Intn(20)
 }
@@ -342,7 +349,6 @@ func TestFn(t *testing.T) {
 	t.Log(a, b)
 }
 
-// closure
 func timeSpent(inner func(op int) int) func(op int) int {
 	return func(n int) int {
 		start := time.Now()
@@ -365,6 +371,26 @@ func TestFn2(t *testing.T) {
 	t.Log(tsSF(10))
 }
 
+type IntConv func(op int) int
+
+func timeSpent2(inner IntConv) IntConv {
+	return func(n int) int {
+		start := time.Now()
+		ret := inner(n)
+		fmt.Println("time spent:", time.Since(start).Seconds())
+		return ret
+	}
+}
+
+func TestFn3(t *testing.T) {
+	a, _ := returnMultiValues()
+	t.Log(a)
+	tsSF := timeSpent2(slowFunc)
+	t.Log(tsSF(10))
+}
+
+
+// args
 func Sum(ops ...int) int {
 	ret := 0
 	for _, op := range ops {
@@ -378,25 +404,30 @@ func TestVarParam(t *testing.T) {
 	t.Log(Sum(1, 2, 3, 4, 5))
 }
 
+// panic
+// defer
 func Clear() {
 	fmt.Println("Clear resources.")
 }
 
-// panic
-// defer
 func TestDefer(t *testing.T) {
 	defer Clear()
 	fmt.Println("Start")
 	panic("err")
 }
 
+func TestDefer2(t *testing.T) {
+	fmt.Println("Start")
+	panic("err")
+}
+
+// struct
 type Employee struct {
 	Id   string
 	Name string
 	Age  int
 }
 
-// struct
 func TestCreatEmployeeObj(t *testing.T) {
 	e := Employee{"0", "Bob", 20}
 	e1 := Employee{Name: "Mike", Age: 30}
@@ -404,8 +435,8 @@ func TestCreatEmployeeObj(t *testing.T) {
 	e2.Id = "2"
 	e2.Age = 22
 	e2.Name = "Rose"
-	t.Log(e)
-	t.Log(e1)
+	t.Log("e:", e)
+	t.Log("e1:", e1)
 	e1.Age = 300
 	t.Log(e1)
 	t.Log(e1.Id)
@@ -431,6 +462,7 @@ func (e *Employee) String2() string { //地址不变
 	return fmt.Sprintf("ID:%s-Name:%s-Age:%d", e.Id, e.Name, e.Age)
 }
 
+// interface
 type Programmer interface {
 	WriteHelloWorld() string
 }
@@ -448,23 +480,7 @@ func TestClient(t *testing.T) {
 	t.Log(p.WriteHelloWorld())
 }
 
-type IntConv func(op int) int
 
-func timeSpent2(inner IntConv) IntConv {
-	return func(n int) int {
-		start := time.Now()
-		ret := inner(n)
-		fmt.Println("time spent:", time.Since(start).Seconds())
-		return ret
-	}
-}
-
-func TestFn3(t *testing.T) {
-	a, _ := returnMultiValues()
-	t.Log(a)
-	tsSF := timeSpent2(slowFunc)
-	t.Log(tsSF(10))
-}
 
 // object oriented
 type Pet struct {
