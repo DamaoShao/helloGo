@@ -1,11 +1,9 @@
 package example
 
 import (
-	"context"
 	"errors"
 	"fmt"
 	"math/rand"
-	"runtime"
 	"strconv"
 	"strings"
 	"sync"
@@ -620,6 +618,7 @@ func TestPanicVxExit(t *testing.T) {
 	panic(errors.New("wrong!"))
 }
 
+// csp
 func TestGroutine(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		go func(i int) {
@@ -656,6 +655,7 @@ func TestCounterWithLock(t *testing.T) {
 	t.Logf("counter = %d", counter)
 }
 
+// join
 func TestCounterWaitGroup(t *testing.T) {
 	var mut sync.Mutex
 	var wg sync.WaitGroup
@@ -675,7 +675,6 @@ func TestCounterWaitGroup(t *testing.T) {
 	t.Logf("counter = %d", counter)
 }
 
-// csp
 func service() string {
 	time.Sleep(time.Millisecond * 50)
 	return "Done"
@@ -693,8 +692,8 @@ func TestService(t *testing.T) {
 }
 
 func AsyncService() chan string {
-	//retCh := make(chan string)
-	retCh := make(chan string, 1)
+	retCh := make(chan string)
+	//retCh := make(chan string, 1)
 	go func() {
 		ret := service()
 		fmt.Println("returned result.")
@@ -710,11 +709,12 @@ func TestAsynService(t *testing.T) {
 	fmt.Println(<-retCh)
 }
 
+// select
 func TestSelect(t *testing.T) {
 	select {
 	case ret := <-AsyncService():
 		t.Log(ret)
-	case <-time.After(time.Microsecond * 100000):
+	case <-time.After(time.Microsecond * 100):
 		t.Error("time out")
 	}
 }
@@ -789,120 +789,7 @@ func TestCancel(t *testing.T) {
 	time.Sleep(time.Second * 1)
 }
 
-/*
-context
 
-根context: 通过context.Background() 创建
-子context: context.WithCancel(parentContext) 创建
-  ctx, cancel := context.WithCancel(context.Background())
-当前context被取消时，基于他的子context都会被取消
-接收取消通知 <- ctx.Done()
-*/
-
-func isCancelledWithContext(ctx context.Context) bool {
-	select {
-	case <-ctx.Done():
-		return true
-	default:
-		return false
-	}
-}
-
-func TestCancelWithContext(t *testing.T) {
-
-	ctx, cancel := context.WithCancel(context.Background())
-	for i := 0; i < 5; i++ {
-		go func(i int, ctx context.Context) {
-			for {
-				if isCancelledWithContext(ctx) {
-					break
-				}
-				time.Sleep(time.Microsecond * 5)
-			}
-			fmt.Println(i, "canceled")
-		}(i, ctx)
-	}
-	cancel()
-	time.Sleep(time.Second * 1)
-}
-
-// singleton
-type Singleton struct {
-}
-
-var singleInstance *Singleton
-var once sync.Once
-
-func GetSingletonObj() *Singleton {
-	once.Do(func() {
-		fmt.Println("Create obj")
-		singleInstance = new(Singleton)
-	})
-	return singleInstance
-}
-
-func TestGetSingletonObj(t *testing.T) {
-	var wg sync.WaitGroup
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			obj := GetSingletonObj()
-			//fmt.Println(obj)
-			fmt.Printf("%x\n", unsafe.Pointer(obj))
-			wg.Done()
-		}()
-	}
-	wg.Wait()
-}
-
-// any task return, main func return
-func runTask(id int) string {
-	time.Sleep(10 * time.Microsecond)
-	return fmt.Sprintf("The result is from %d", id)
-}
-
-func FirstResponse() string {
-	numOfRunner := 10
-	ch := make(chan string, numOfRunner)
-	for i := 0; i < numOfRunner; i++ {
-		go func(i int) {
-			ret := runTask(i)
-			ch <- ret
-		}(i)
-	}
-	return <-ch
-}
-
-func TestFirstResponse(t *testing.T) {
-	t.Log("Before:", runtime.NumGoroutine())
-	t.Log(FirstResponse())
-	time.Sleep(time.Second * 1)
-	t.Log("After:", runtime.NumGoroutine())
-}
-
-// all task return, main func return
-func AllResponse() string {
-	numOfRunner := 10
-	ch := make(chan string, numOfRunner)
-	for i := 0; i < numOfRunner; i++ {
-		go func(i int) {
-			ret := runTask(i)
-			ch <- ret
-		}(i)
-	}
-	finalRet := ""
-	for j := 0; j < numOfRunner; j++ {
-		finalRet += <-ch + "\n"
-	}
-	return finalRet
-}
-
-func TestAllResponse(t *testing.T) {
-	t.Log("Before:", runtime.NumGoroutine())
-	t.Log(AllResponse())
-	time.Sleep(time.Second * 1)
-	t.Log("After:", runtime.NumGoroutine())
-}
 
 // example: pool
 type ResuableObj struct {
@@ -926,11 +813,11 @@ func (p *ObjPool) GetObj(timeout time.Duration) (*ResuableObj, error) {
 	case ret := <-p.bufChan:
 		return ret, nil
 	case <-time.After(timeout): //超时控制
-		return nil, errors.New("tiem out")
+		return nil, errors.New("time out")
 	}
 }
 
-func (p *ObjPool) RelaseObj(obj *ResuableObj) error {
+func (p *ObjPool) ReleaseObj(obj *ResuableObj) error {
 	select {
 	case p.bufChan <- obj:
 		return nil
@@ -946,7 +833,7 @@ func TestObjPool(t *testing.T) {
 			t.Error(err)
 		} else {
 			fmt.Printf("%T\n", v)
-			if err := pool.RelaseObj(v); err != nil {
+			if err := pool.ReleaseObj(v); err != nil {
 				t.Error(err)
 			}
 		}
