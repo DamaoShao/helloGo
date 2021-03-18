@@ -676,38 +676,48 @@ func TestCounterWaitGroup(t *testing.T) {
 }
 
 // csp
-func service() string {
-	time.Sleep(time.Millisecond * 50)
-	return "Done"
-}
-
-func otherTask() {
-	fmt.Println("working on something else")
-	time.Sleep(time.Microsecond * 100)
-	fmt.Println("Task is done.")
-}
+//func service() string {
+//	//time.Sleep(time.Millisecond * 50)
+//	return "Done"
+//}
 
 func TestService(t *testing.T) {
 	fmt.Println(service())
 	otherTask()
 }
 
+func otherTask() {
+	fmt.Println("otherTask-1: working on something else")
+	time.Sleep(1 * time.Second)
+	fmt.Println("otherTask-2: Task is done.")
+}
+
+func service() string {
+	return "service-1: Done"
+}
+
 func AsyncService() chan string {
 	//retCh := make(chan string)
 	retCh := make(chan string, 1)
+	fmt.Println("AsyncService-1: in.")
 	go func() {
+		fmt.Println("")
 		ret := service()
-		fmt.Println("returned result.")
+		fmt.Println("AsyncService-2: returned result.")
 		retCh <- ret
-		fmt.Println("service exited.")
+		fmt.Println("AsyncService-3: service exited.")
 	}()
 	return retCh
 }
 
 func TestAsynService(t *testing.T) {
+	fmt.Println("TestAsynService-1")
 	retCh := AsyncService()
+	fmt.Println("TestAsynService-2")
 	otherTask()
+	fmt.Println("TestAsynService-3")
 	fmt.Println(<-retCh)
+	fmt.Println("TestAsynService-4")
 }
 
 func TestSelect(t *testing.T) {
